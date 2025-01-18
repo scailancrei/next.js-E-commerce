@@ -1,6 +1,6 @@
 import React, { JSX } from "react"
 type ButtonProps = {
-  children: JSX.Element
+  children: JSX.Element | React.ReactNode
   typeButton: React.ButtonHTMLAttributes<HTMLButtonElement>["type"]
   styles?: string
   idButton?: string

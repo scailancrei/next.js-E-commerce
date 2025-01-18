@@ -1,23 +1,24 @@
 "use client"
 import { JSX, useState } from "react"
-import Nav from "./_components/nav"
-import Links from "./_components/links"
-import SearchInput from "./_components/searchInput"
-import { NavItem, NavLinksResponsives } from "./_components/navItem"
-import { MenuIcon } from "./_components/icons"
-
-import UseIconContext from "./context/useIconContext"
-import Button from "./_components/button"
+import Nav from "@/_components/nav"
+import Links from "@/_components/links"
+import SearchInput from "@/_components/searchInput"
+import { NavItem, NavLinksResponsives } from "@/_components/navItem"
+import { MenuIcon } from "@/_components/icons"
+import UseIconContext from "@/context/useIconContext"
+import Button from "@/_components/button"
+import Products from "(store)/store/products"
 
 export default function Home(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false)
+
   const handleNav: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault()
     setIsOpen(!isOpen)
   }
 
   return (
-    <div className=" bg-gray-100 p-2 font-display">
+    <div className=" bg-gray-100 p-2 font-display antialiased  w-screen">
       <Nav
         styles={" bg-blue-500 text-white p-3 "}
         ulStyles={"grid grid-cols-4 auto-cols-auto gap-3 items-center "}
@@ -47,7 +48,7 @@ export default function Home(): JSX.Element {
             <MenuIcon />
           </UseIconContext>
         </Button>
-        <div className="max-sm:hidden col-start-4 flex gap-6 hover:*:bg-[#1e1b4b] hover:*:text-blue-500">
+        <div className="max-sm:hidden justify-around col-start-4 flex gap-6 hover:*:bg-[#1e1b4b] hover:*:text-blue-500">
           <NavItem styles={""}>
             <Links href={"/login"}>Login</Links>
           </NavItem>
@@ -58,8 +59,9 @@ export default function Home(): JSX.Element {
         {isOpen && <NavLinksResponsives handleClick={handleNav} />}
       </Nav>
 
-      <div className="p-6 border rounded-md text-center text-black">
-        <h1 className="text-3xl font-bold">Welcome to the E-Commerce Store</h1>
+      <div className="grid grid-cols-1 grid-rows-1 auto-cols-auto grid-flow-row-dense gap-3 justify-center">
+        <h2 className="text-5xl text-center">Products</h2>
+        <Products />
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import Links from "../../_components/links"
+import Links from "@/_components/links"
 
 export default function Dashboard() {
   return (
