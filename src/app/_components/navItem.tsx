@@ -38,9 +38,6 @@ export const NavLinksResponsives = ({ handleClick }: any): JSX.Element => {
             <Links href={"/login"} styles={"text-black"}>
               login
             </Links>
-            <Links href={"/"} styles={"text-black"}>
-              Admin
-            </Links>
           </div>
         </div>
       </div>

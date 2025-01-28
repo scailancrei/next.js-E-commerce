@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import List from "@/_components/list"
-import Api from "api/api"
+import { getAllProducts } from "api/api"
 interface ListProps {
   children?: React.ReactNode
 }
@@ -10,7 +10,7 @@ export default function Products({ children }: ListProps) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await Api().then((result) => result.json())
+      const response = await getAllProducts().then((result) => result.json())
 
       setData(response)
     }

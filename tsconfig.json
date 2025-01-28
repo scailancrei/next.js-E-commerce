@@ -3,7 +3,11 @@
     "baseUrl": "src/app/",
     "paths": {
       "@/_components/*": ["_components/*"],
-      "@/context/*": ["context/*"]
+      "@/context/*": ["context/*"],
+      "@/utils/*": ["utils/*"],
+      "api/*": ["api/*"],
+      "providers/*": ["providers/*"],
+      "app/*": ["*"]
     },
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -24,6 +28,13 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next.config.ts",
+    "src/app/register/register"
+  ],
   "exclude": ["node_modules"]
 }
