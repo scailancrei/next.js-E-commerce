@@ -1,9 +1,15 @@
-import { Metadata } from "next"
+import { Metadata, Viewport } from "next"
 import "./globals.css"
+import Providers from "providers/providers"
 
 export const metadata: Metadata = {
   title: "E-Commerce",
   description: "React 19 with TypeScript",
+}
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  width: "device-width",
 }
 
 export default function RootLayout({
@@ -14,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <main>{children}</main>
+        <Providers>
+          <main>{children}</main>
+        </Providers>
       </body>
     </html>
   )
