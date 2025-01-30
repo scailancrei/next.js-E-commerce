@@ -33,7 +33,7 @@ export default function FormLogin(): any {
         type={"password"}
         name={"password"}
         required={true}
-        styles={"w-1/2 rounded-sm bg-white dark:bg-black"}
+        styles={"w-1/2 rounded-sm bg-white "}
         changeEventHandler={(e) => setPassword(e.target.value)}
         placeHolder={"Enter Password"}
         value={password}
