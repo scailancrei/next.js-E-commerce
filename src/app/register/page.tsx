@@ -18,7 +18,7 @@ export default function Register(): any {
         required={true}
         type={"email"}
         name={"email"}
-        styles={"w-1/2 rounded"}
+        styles={"w-1/2 rounded-sm"}
         changeEventHandler={(e) => setEmail(e.target.value)}
         placeHolder={"Enter email"}
         value={email}
@@ -28,7 +28,7 @@ export default function Register(): any {
         required={true}
         type={"password"}
         name={"password"}
-        styles={"w-1/2 rounded"}
+        styles={"w-1/2 rounded-sm"}
         changeEventHandler={(e) => setPassword(e.target.value)}
         placeHolder={"Enter password"}
         value={password}
@@ -36,7 +36,7 @@ export default function Register(): any {
       <button
         type="submit"
         className={
-          "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-sm"
         }
       >
         Register

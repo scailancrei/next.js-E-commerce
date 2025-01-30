@@ -1,4 +1,5 @@
 "use client"
+import "./global.css"
 import { JSX, useContext, useEffect, useState } from "react"
 import Nav from "@/_components/nav"
 import Links from "@/_components/links"
@@ -10,28 +11,26 @@ import Button from "@/_components/button"
 import Products from "(store)/store/products"
 import { ThemeContext } from "@/context/useThemeContext"
 import Theme from "./_components/theme"
-import { createClient } from "./utils/supabase/client"
+import { UserContext } from "@/context/useUserContext"
 
 export default function Home(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false)
-  const [isUser, setIsUser] = useState(false)
+
   const { theme } = useContext(ThemeContext)
-  const supabase = createClient()
+  const userContext = useContext(UserContext)
 
   const handleNav: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault()
     setIsOpen(!isOpen)
   }
 
-  useEffect(() => {
-    supabase.auth.getUser() ? setIsUser(true) : setIsUser(false)
-  }, [])
-
   return (
     <div
       className={` ${
-        theme === "light" ? "bg-gray-100 text-black" : "bg-black text-white"
-      }  p-2 font-display antialiased  w-screen`}
+        theme === "light"
+          ? "bg-gray-100 text-black h-full"
+          : "bg-black text-white h-full "
+      }  p-2 font-display antialiased  w-screen `}
     >
       <Nav
         id="navbar"
@@ -44,7 +43,7 @@ export default function Home(): JSX.Element {
           </Links>
         </NavItem>
         <NavItem styles={"col-start-2 col-span-2 max-sm:col-span-1/2"}>
-          <SearchInput styles={"text-black w-full p-2  rounded-md"} />
+          <SearchInput styles={"text-black w-full p-2 bg-white rounded-md"} />
         </NavItem>
 
         <Button
@@ -57,15 +56,15 @@ export default function Home(): JSX.Element {
               color: "blue",
               size: "2rem",
               className:
-                " transition ease-in-out  hover:-translate-y-1 hover:scale-110  hover:bg-indigo-500 duration-300",
+                "transition ease-in-out  hover:-translate-y-1 hover:scale-110  hover:bg-indigo-500 duration-300",
             }}
           >
             <MenuIcon />
           </UseIconContext>
         </Button>
-        <div className="max-sm:hidden justify-around col-start-4 flex gap-6 hover:*:bg-[#1e1b4b] hover:*:text-blue-500">
+        <div className="max-sm:hidden justify-around col-start-4 flex gap-6 *:hover:bg-[#1e1b4b] *:hover:text-blue-500">
           <NavItem styles={""}>
-            {isUser ? (
+            {userContext.user ? (
               <Links href={"/logout"}>Logout</Links>
             ) : (
               <Links href={"/login"}>Login</Links>

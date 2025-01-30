@@ -3,6 +3,7 @@ import Links from "./links"
 import { CloseIcon } from "./icons"
 import UseIconContext from "../context/useIconContext"
 import Button from "./button"
+import Theme from "./theme"
 
 type Props = {
   children: JSX.Element
@@ -13,10 +14,13 @@ export const NavItem = ({ children, styles }: Props): JSX.Element => {
   return <li className={styles}>{children}</li>
 }
 
-export const NavLinksResponsives = ({ handleClick }: any): JSX.Element => {
+export const NavLinksResponsives = ({
+  handleClick,
+  isUser,
+}: any): JSX.Element => {
   return (
-    <div className="fixed inset-0 z-10 bg-gray-500 bg-opacity-75 transition-opacity duration-700 ease-in-out">
-      <div className=" flex inset-0 z-10  ">
+    <div className="fixed inset-0 z-10 bg-gray-500/75  transition-opacity duration-700 ease-in-out">
+      <div className=" flex inset-0 z-10">
         <div className="animate-slide-in-right bg-gray-200  p-6 absolute top-0 right-0 w-1/2 rounded-2xl">
           <Button
             styles={"float-right bg-gray-400"}
@@ -34,10 +38,18 @@ export const NavLinksResponsives = ({ handleClick }: any): JSX.Element => {
               <CloseIcon />
             </UseIconContext>
           </Button>
-          <div className="flex flex-col gap-6 items-center hover:*:underline hover:*:bg-[#272727]  hover:*:text-blue-500">
-            <Links href={"/login"} styles={"text-black"}>
-              login
-            </Links>
+
+          <div className="flex flex-col gap-6 items-center *:hover:underline *:hover:bg-[#272727]  *:hover:text-blue-500">
+            {isUser ? (
+              <Links href={"/logout"} styles={"text-black"}>
+                log out
+              </Links>
+            ) : (
+              <Links href={"/login"} styles={"text-black"}>
+                login
+              </Links>
+            )}
+            <Theme />
           </div>
         </div>
       </div>

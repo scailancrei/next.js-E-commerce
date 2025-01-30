@@ -11,16 +11,13 @@ const Schema = z.object({
   password: z.string(),
 })
 
-export async function loginPostForm(formData: FormData) {
+export async function loginPostForm(formData: FormData): Promise<void> {
   const supabase = await createClient()
   const validateForm = Schema.safeParse({
     email: formData.get("email") as string,
     password: formData.get("password") as string | undefined,
   })
   if (!validateForm.success) {
-    return {
-      errors: validateForm.error.flatten().fieldErrors,
-    }
   }
   const rawData = {
     email: validateForm.data.email,
@@ -31,7 +28,7 @@ export async function loginPostForm(formData: FormData) {
 
   if (error) {
     console.log(error.code)
-    return redirect("/login")
   }
+
   return redirect("/")
 }

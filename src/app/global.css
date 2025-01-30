@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-slide-in-right: slide-in-right 0.2s ease-in;
+
+  --font-display: Choldera;
+
+  @keyframes slide-in-right {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}

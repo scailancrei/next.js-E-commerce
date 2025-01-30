@@ -1,5 +1,4 @@
 import { Metadata, Viewport } from "next"
-import "./globals.css"
 import Providers from "providers/providers"
 
 export const metadata: Metadata = {

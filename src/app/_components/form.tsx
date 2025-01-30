@@ -2,7 +2,7 @@ import React, { JSX } from "react"
 import Form from "next/form"
 type FormProps = {
   children: React.ReactNode
-  action: string | ((formData: FormData) => void | Promise<void>)
+  action: string | ((formData: FormData) => Promise<void>)
   id: string
   styles?: string
 }
