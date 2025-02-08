@@ -1,21 +1,24 @@
 "use client"
 import { useState } from "react"
 import { ThemeContext, Theme } from "@/context/useThemeContext"
-import { UserContext, UserObject } from "@/context/useUserContext"
+import { User } from "@supabase/supabase-js"
+import { UserContext } from "@/context/useUserContext"
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light")
-  const [user, setUser] = useState<UserObject>(null)
+  const [user, setUser] = useState<User>(null)
+
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light")
   }
 
-  const toggleUser = (user: UserObject) => {
-    setUser(user)
+  const toggleUser = (userToken: User) => {
+    console.log("Toggle user here: ", userToken)
+    setUser(userToken)
   }
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <UserContext.Provider value={{ user: null, setUser: toggleUser }}>
+      <UserContext.Provider value={{ currentUser: user, setUser: toggleUser }}>
         {children}
       </UserContext.Provider>
     </ThemeContext.Provider>

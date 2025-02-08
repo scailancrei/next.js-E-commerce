@@ -1,6 +1,7 @@
 "use server"
 import { redirect } from "next/navigation"
 import { createClient } from "utils/supabase/server"
+import { UserContext } from "@/context/useUserContext"
 import { z } from "zod"
 
 const Schema = z.object({
@@ -11,7 +12,7 @@ const Schema = z.object({
   password: z.string(),
 })
 
-export async function loginPostForm(formData: FormData): Promise<void> {
+export async function loginPostFormAction(formData: FormData): Promise<void> {
   const supabase = await createClient()
   const validateForm = Schema.safeParse({
     email: formData.get("email") as string,
@@ -24,7 +25,7 @@ export async function loginPostForm(formData: FormData): Promise<void> {
     password: validateForm.data.password,
   }
 
-  const { error } = await supabase.auth.signInWithPassword(rawData)
+  const { data, error } = await supabase.auth.signInWithPassword(rawData)
 
   if (error) {
     console.log(error.code)

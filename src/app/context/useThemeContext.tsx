@@ -7,4 +7,4 @@ type ThemeContext = {
   toggleTheme: () => void
 }
 
-export const ThemeContext = createContext<ThemeContext>({} as ThemeContext)
+export const ThemeContext = createContext<ThemeContext | null>(null)

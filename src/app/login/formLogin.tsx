@@ -1,7 +1,7 @@
 import { useState } from "react"
 import FormComponent from "@/_components/form"
 import Input from "@/_components/input"
-import { loginPostForm } from "api/loginPostForm"
+import { loginPostFormAction } from "api/loginPostFormAction"
 import Link from "next/link"
 
 export default function FormLogin(): any {
@@ -11,7 +11,7 @@ export default function FormLogin(): any {
   return (
     <FormComponent
       id="login-form"
-      action={loginPostForm}
+      action={loginPostFormAction}
       styles="w-full flex flex-col justify-center items-center max-w-sm gap-4 text-black"
     >
       <label className="focus:valid:bg-green-600 focus:invalid:bg-red-600">

@@ -1,6 +1,6 @@
 "use client"
 import "./global.css"
-import { JSX, useContext, useEffect, useState } from "react"
+import { JSX, useContext, useState } from "react"
 import Nav from "@/_components/nav"
 import Links from "@/_components/links"
 import SearchInput from "@/_components/searchInput"
@@ -11,13 +11,14 @@ import Button from "@/_components/button"
 import Products from "(store)/store/products"
 import { ThemeContext } from "@/context/useThemeContext"
 import Theme from "./_components/theme"
-import { UserContext } from "@/context/useUserContext"
+import { UserContext } from "./context/useUserContext"
 
 export default function Home(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false)
 
   const { theme } = useContext(ThemeContext)
-  const userContext = useContext(UserContext)
+  const { currentUser } = useContext(UserContext)
+  console.log("The current user is: ", currentUser) // currentUser object session
 
   const handleNav: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault()
@@ -64,7 +65,7 @@ export default function Home(): JSX.Element {
         </Button>
         <div className="max-sm:hidden justify-around col-start-4 flex gap-6 *:hover:bg-[#1e1b4b] *:hover:text-blue-500">
           <NavItem styles={""}>
-            {userContext.user ? (
+            {currentUser ? (
               <Links href={"/logout"}>Logout</Links>
             ) : (
               <Links href={"/login"}>Login</Links>

@@ -2,7 +2,7 @@
 import { useState } from "react"
 import FormComponent from "@/_components/form"
 import Input from "@/_components/input"
-import { registerPostForm } from "api/registerPostForm"
+import { registerPostFormAction } from "api/registerPostFormAction"
 
 export default function Register(): any {
   const [email, setEmail] = useState("")
@@ -10,7 +10,7 @@ export default function Register(): any {
   return (
     <FormComponent
       id="register-form"
-      action={registerPostForm}
+      action={registerPostFormAction}
       styles="w-full flex flex-col justify-center items-center max-w-sm gap-4 text-black"
     >
       <label>Email</label>

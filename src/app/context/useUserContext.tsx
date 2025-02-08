@@ -2,13 +2,12 @@
 import { User } from "@supabase/supabase-js"
 import { createContext } from "react"
 
-export type UserObject = {
-  User: User
+interface UserContextType {
+  currentUser: User | null
+  setUser: (User: User) => void
 }
 
-interface UserContext {
-  user: UserObject | null
-  setUser: (user: UserObject) => void
-}
-
-export const UserContext = createContext<UserContext>({} as UserContext)
+export const UserContext = createContext<UserContextType>({
+  currentUser: null,
+  setUser: () => {},
+})

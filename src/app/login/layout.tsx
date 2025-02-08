@@ -7,12 +7,7 @@ export default function LoginLayout({
 }) {
   return (
     <Providers>
-      <section
-        id="login-layout"
-        className="dark:bg-black dark:text-white bg-white text-black"
-      >
-        {children}
-      </section>
+      <section id="login-layout">{children}</section>
     </Providers>
   )
 }
