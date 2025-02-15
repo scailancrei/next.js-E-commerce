@@ -14,14 +14,7 @@ export default function FormComponent({
   styles,
 }: FormProps): JSX.Element {
   return (
-    <Form
-      className={styles}
-      action={
-        typeof action === "string" ? action : (formData) => action(formData)
-      }
-      id={id}
-      formMethod="post"
-    >
+    <Form className={styles} action={action} id={id} formMethod="post">
       {children}
     </Form>
   )

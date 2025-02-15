@@ -8,7 +8,7 @@ type SearchInputProps = {
   styles?: string
 }
 
-export default function SearchInput({ styles }: SearchInputProps): JSX.Element {
+export default function Search({ styles }: SearchInputProps): JSX.Element {
   const [search, setSearch] = useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +19,7 @@ export default function SearchInput({ styles }: SearchInputProps): JSX.Element {
     <div className="flex items-center bg-gray-500 rounded-md">
       <Input
         type={"text"}
+        name={"search"}
         placeHolder="Search"
         styles={styles}
         changeEventHandler={handleChange}
