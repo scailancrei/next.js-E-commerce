@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation"
 import { createClient } from "utils/supabase/server"
 
-export async function registerPostForm(formData: FormData) {
+export async function registerPostFormAction(formData: FormData) {
   const supabase = await createClient()
 
   let { data, error } = await supabase.auth.signUp({

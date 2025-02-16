@@ -4,10 +4,15 @@ import { CloseIcon } from "./icons"
 import UseIconContext from "../context/useIconContext"
 import Button from "./button"
 import Theme from "./theme"
+import { UserType } from "@/context/useUserContext"
 
 type Props = {
   children: JSX.Element
   styles?: string
+}
+type NavProps = {
+  handleClick: React.MouseEventHandler<HTMLButtonElement>
+  isUser: UserType
 }
 
 export const NavItem = ({ children, styles }: Props): JSX.Element => {
@@ -17,7 +22,7 @@ export const NavItem = ({ children, styles }: Props): JSX.Element => {
 export const NavLinksResponsives = ({
   handleClick,
   isUser,
-}: any): JSX.Element => {
+}: NavProps): JSX.Element => {
   return (
     <div className="fixed inset-0 z-10 bg-gray-500/75  transition-opacity duration-700 ease-in-out">
       <div className=" flex inset-0 z-10">

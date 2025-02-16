@@ -1,23 +1,27 @@
 "use client"
 import { useState } from "react"
 import { ThemeContext, Theme } from "@/context/useThemeContext"
-import { UserContext, UserObject } from "@/context/useUserContext"
+import { UserContext, UserType } from "@/context/useUserContext"
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light")
-  const [user, setUser] = useState<UserObject>(null)
+  const [currentUser, setCurrentUser] = useState<UserType | null>()
+
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light")
   }
 
-  const toggleUser = (user: UserObject) => {
-    setUser(user)
+  const saveUser = (user) => {
+    setCurrentUser(user)
   }
+
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <UserContext.Provider value={{ user: null, setUser: toggleUser }}>
+    <UserContext.Provider
+      value={{ currentUser: currentUser, setUser: saveUser }}
+    >
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
         {children}
-      </UserContext.Provider>
-    </ThemeContext.Provider>
+      </ThemeContext.Provider>
+    </UserContext.Provider>
   )
 }
