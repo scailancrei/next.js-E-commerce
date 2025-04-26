@@ -1,6 +1,6 @@
 import React, { JSX } from "react"
 type ButtonProps = {
-  children: JSX.Element | React.ReactNode
+  children?: JSX.Element | React.ReactNode
   typeButton: React.ButtonHTMLAttributes<HTMLButtonElement>["type"]
   styles?: string
   idButton?: string
@@ -12,7 +12,7 @@ export default function Button({
   handleClick,
   idButton,
   children,
-}: ButtonProps): any {
+}: ButtonProps): React.ReactElement {
   return (
     <button
       id={idButton}

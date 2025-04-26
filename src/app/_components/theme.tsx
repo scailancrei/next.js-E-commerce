@@ -16,7 +16,6 @@ export default function Theme({ children, styles }: ThemeProps): JSX.Element {
       <Button typeButton="button" handleClick={toggleTheme}>
         {theme === "light" ? "🌙" : "🌞"}
       </Button>
-      {children}
     </>
   )
 }

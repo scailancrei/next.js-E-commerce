@@ -1,18 +1,14 @@
+"use client"
 import React from "react"
-import Product from "@/_components/product"
+import { ListProps } from "@/types/types"
 
-type ListProps = {
-  products: Array<{ id: number; title: string; price: number; image: string }>
-}
-const List = ({ products }: ListProps) => {
+const List = ({ array, children }: ListProps) => {
   return (
-    <ul className="list-disc list-inside">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-center">
-        {products.map((product) => (
-          <Product key={product.id} product={product} />
-        ))}
-      </div>
-    </ul>
+    <>
+      {array.map((item, index) => (
+        <React.Fragment key={index}>{children(item)}</React.Fragment>
+      ))}
+    </>
   )
 }
 

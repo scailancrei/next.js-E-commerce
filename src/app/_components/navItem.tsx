@@ -2,9 +2,11 @@ import { JSX } from "react"
 import Links from "./links"
 import { CloseIcon } from "./icons"
 import UseIconContext from "../context/useIconContext"
-import Button from "./button"
-import Theme from "./theme"
+import Button from "@/_components/button"
+import Theme from "@/_components/theme"
+
 import { UserType } from "@/context/useUserContext"
+import Link from "@/_components/links"
 
 type Props = {
   children: JSX.Element
@@ -12,7 +14,7 @@ type Props = {
 }
 type NavProps = {
   handleClick: React.MouseEventHandler<HTMLButtonElement>
-  isUser: UserType
+  isUser: UserType | undefined
 }
 
 export const NavItem = ({ children, styles }: Props): JSX.Element => {
@@ -44,7 +46,7 @@ export const NavLinksResponsives = ({
             </UseIconContext>
           </Button>
 
-          <div className="flex flex-col gap-6 items-center *:hover:underline *:hover:bg-[#272727]  *:hover:text-blue-500">
+          <div className="flex flex-col gap-6 items-baseline *:hover:underline *:hover:bg-[#272727]  *:hover:text-blue-500">
             {isUser ? (
               <Links href={"/logout"} styles={"text-black"}>
                 log out
@@ -54,7 +56,18 @@ export const NavLinksResponsives = ({
                 login
               </Links>
             )}
+            <Link href={"/cart"} styles={"text-black"}>
+              Cart
+            </Link>
+
             <Theme />
+            {isUser ? (
+              <Button styles={"text-black"} typeButton="button">
+                profile
+              </Button>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>
