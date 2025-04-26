@@ -2,10 +2,15 @@ import { IconType } from "react-icons"
 import { TfiMenuAlt } from "react-icons/tfi"
 import { FaSearch } from "react-icons/fa"
 import { FaXmark } from "react-icons/fa6"
+import { LuShoppingCart } from "react-icons/lu"
 import { BsCartPlusFill, BsCartDashFill } from "react-icons/bs"
 
 export const MenuIcon: IconType = () => {
   return <TfiMenuAlt />
+}
+
+export const ShoppingCartIcon: IconType = () => {
+  return <LuShoppingCart />
 }
 
 export const SearchIcon: IconType = () => {

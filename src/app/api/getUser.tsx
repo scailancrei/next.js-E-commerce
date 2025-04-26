@@ -7,5 +7,6 @@ export async function GetUser() {
   if (error) {
     return { error }
   }
+
   return { data }
 }

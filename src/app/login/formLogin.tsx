@@ -5,7 +5,7 @@ import { loginPostFormAction } from "api/loginPostFormAction"
 import Link from "next/link"
 
 export default function FormLogin(): JSX.Element {
-  const [email, setUsername] = useState("")
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
 
@@ -35,7 +35,7 @@ export default function FormLogin(): JSX.Element {
           type={"email"}
           name={"email"}
           styles={"w-full rounded-sm bg-white border-gray-500 border-2"}
-          changeEventHandler={(e) => setUsername(e.target.value)}
+          changeEventHandler={(e) => setEmail(e.target.value)}
           placeHolder={"Enter email"}
           value={email}
         />

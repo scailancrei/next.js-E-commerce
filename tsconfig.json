@@ -5,20 +5,23 @@
       "@/_components/*": ["_components/*"],
       "@/context/*": ["context/*"],
       "@/utils/*": ["utils/*"],
+
       "api/*": ["api/*"],
       "providers/*": ["providers/*"],
+      "@/types/*": ["types/*"],
       "app/*": ["*"]
     },
-    "target": "ES2017",
+
+    "target": "ES2024",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "noEmit": true,
     "incremental": true,
-    "module": "esnext",
+    "module": "Node16",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -26,8 +29,10 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "types": ["jest", "@testing-library/jest-dom"]
   },
+
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",

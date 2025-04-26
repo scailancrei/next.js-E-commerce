@@ -1,10 +1,12 @@
-"use client"
 import { createContext } from "react"
 export type Theme = "light" | "dark"
 
-type ThemeContext = {
+interface ThemeContext {
   theme: Theme
   toggleTheme: () => void
 }
 
-export const ThemeContext = createContext<ThemeContext | null>(null)
+export const ThemeContext = createContext<ThemeContext>({
+  theme: "light",
+  toggleTheme: () => {},
+})
