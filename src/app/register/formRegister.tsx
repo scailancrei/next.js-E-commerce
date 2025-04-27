@@ -1,7 +1,7 @@
 import { useState } from "react"
 import FormComponent from "@/_components/form"
 import Input from "@/_components/input"
-import { registerPostFormAction } from "api/registerPostFormAction"
+import { registerPostFormAction } from "app/services/registerPostFormAction"
 
 export default function FormRegister() {
   const [email, setEmail] = useState("")

@@ -1,7 +1,7 @@
 import { JSX, useState } from "react"
 import FormComponent from "@/_components/form"
 import Input from "@/_components/input"
-import { loginPostFormAction } from "api/loginPostFormAction"
+import { loginPostFormAction } from "app/services/loginPostFormAction"
 import Link from "next/link"
 
 export default function FormLogin(): JSX.Element {

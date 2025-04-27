@@ -4,7 +4,7 @@ import { ProductsCartContext } from "@/context/useProductsCartContext"
 import { CartTotalPriceContext } from "@/context/useCartTotalPriceContext"
 import Product from "@/_components/product"
 import { handleAddToCart, ProductType } from "@/types/types"
-import { getAllProducts } from "api/api"
+import { getAllProducts } from "app/services/api"
 
 export default function Products(): React.ReactElement {
   const [productsList, setProductsList] = useState<ProductType[]>()
