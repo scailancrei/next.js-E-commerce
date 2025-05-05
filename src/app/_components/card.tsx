@@ -1,6 +1,3 @@
-import Button from "./button"
-import { RemoveFromCart, AddToCart } from "./icons"
-
 interface CardProps {
   children: React.ReactNode
   styles: string

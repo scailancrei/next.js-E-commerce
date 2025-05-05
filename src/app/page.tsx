@@ -14,7 +14,7 @@ import { UserContext } from "@/context/useUserContext"
 import Theme from "@/_components/theme"
 import Cart from "@/_components/Cart"
 import CartList from "@/_components/CartList"
-import { GetUser } from "./api/getUser"
+import { GetUser } from "./services/getUser"
 import { CartListContext } from "./context/useCartListContext"
 
 export default function Home(): JSX.Element {
