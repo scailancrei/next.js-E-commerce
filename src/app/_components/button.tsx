@@ -1,11 +1,6 @@
 import React, { JSX } from "react"
-type ButtonProps = {
-  children?: JSX.Element | React.ReactNode
-  typeButton: React.ButtonHTMLAttributes<HTMLButtonElement>["type"]
-  styles?: string
-  idButton?: string
-  handleClick?: React.MouseEventHandler<HTMLButtonElement>
-}
+import { ButtonProps } from "@/types/types"
+
 export default function Button({
   styles,
   typeButton,

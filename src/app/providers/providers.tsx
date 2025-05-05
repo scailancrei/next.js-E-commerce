@@ -1,8 +1,8 @@
 "use client"
 import { useState } from "react"
-import { ThemeContext, Theme } from "@/context/useThemeContext"
+import { ThemeContext } from "@/context/useThemeContext"
 import { UserContext } from "@/context/useUserContext"
-import { ProductType, UserType } from "@/types/types"
+import { ProductType, UserType, Theme } from "@/types/types"
 import { ProductsCartContext } from "@/context/useProductsCartContext"
 import { CartListContext } from "@/context/useCartListContext"
 import { CartTotalPriceContext } from "@/context/useCartTotalPriceContext"
@@ -27,6 +27,8 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   }
 
   const sumTotalPrice = (product: ProductType) => {
+    console.log("Sumando precio: ", product.price)
+    console.log("Precio total: ", currentTotalPrice)
     setCurrentTotalPrice(currentTotalPrice + product.price)
   }
 
@@ -34,17 +36,23 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     setCurrentTotalPrice(currentTotalPrice - product.price)
   }
 
+  // Handle total price with actions
+  const setCartTotalPrice = (
+    product: ProductType,
+    action: "add" | "remove"
+  ) => {
+    if (action === "add") {
+      sumTotalPrice(product)
+    } else if (action === "remove") {
+      minusTotalPrice(product)
+    }
+  }
+
   return (
     <CartTotalPriceContext.Provider
       value={{
         cartTotalPrice: currentTotalPrice,
-        setCartTotalPrice: (
-          currentTotalPrice: number,
-          product: ProductType
-        ) => {
-          sumTotalPrice(product)
-          return currentTotalPrice
-        },
+        setCartTotalPrice,
       }}
     >
       <CartListContext.Provider

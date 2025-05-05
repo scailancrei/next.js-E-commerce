@@ -1,14 +1,23 @@
+import { JSX } from "react"
 import { User } from "@supabase/supabase-js"
-import { Dispatch } from "react"
+
+export type Theme = "light" | "dark"
+
+export type ButtonProps = {
+  children?: JSX.Element | React.ReactNode
+  typeButton: React.ButtonHTMLAttributes<HTMLButtonElement>["type"]
+  styles?: string
+  idButton?: string
+  handleClick?: React.MouseEventHandler<HTMLButtonElement>
+}
 
 export type handleToRemoveFromCart = (
-  e: React.MouseEvent<HTMLButtonElement>,
-  product: ProductType
+  product: ProductType,
+  index: number
 ) => void
-export type handleAddToCart = (
-  e: React.MouseEvent<HTMLButtonElement>,
-  product: ProductType
-) => void
+
+export type handleAddToCart = (product: ProductType) => void
+
 export type ProductFunctions = {
   // Type of functions to ADD or Remove from cart
   handleFunction: handleToRemoveFromCart | handleAddToCart
@@ -16,7 +25,7 @@ export type ProductFunctions = {
 
 export type ProductProps = {
   product: ProductType
-  handleFunction: ProductFunctions["handleFunction"]
+  handleFunction: (product: ProductType, index?: number) => void
   children?: React.ReactNode
 }
 export type UserType = {
@@ -53,13 +62,25 @@ export type CartProps = {
 }
 
 export type ListProps = {
-  children: (item: ProductType) => React.JSX.Element
-  array: Record<string, ProductType>[] | ProductType[]
+  children: (item: ProductType, index: number) => React.ReactNode
+  array: ProductType[]
 }
+export type CartTotalPriceAction = "add" | "remove"
 
 export type CartTotalPriceContextType = {
   cartTotalPrice: number
-  setCartTotalPrice: (currentTotalPrice: number, product: ProductType) => number
+  setCartTotalPrice: (
+    product: ProductType,
+    action: CartTotalPriceAction
+  ) => void
 }
 
 export type State = true | false
+
+// Test-utils Providers type
+export type AllTheProvidersProps = {
+  children: React.ReactNode
+  productsCart?: ProductType[]
+  user?: any
+  theme?: Theme
+}
