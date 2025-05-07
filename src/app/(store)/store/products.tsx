@@ -12,10 +12,10 @@ export default function Products(): React.ReactElement {
   const { cartTotalPrice, setCartTotalPrice } = useContext(
     CartTotalPriceContext
   )
-  const handleAddToCart: handleAddToCart = (e, product) => {
-    e.preventDefault()
+  const handleAddToCart: handleAddToCart = (product) => {
+    // add product to cart
     setProductsCart([...productsCart, product])
-    setCartTotalPrice(cartTotalPrice + product.price, product)
+    setCartTotalPrice(product, "add")
   }
 
   useEffect(() => {

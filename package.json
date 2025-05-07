@@ -9,6 +9,7 @@
     "lint": "next lint",
     "cypress:open": "cypress open",
     "test": "jest",
+    "cache:clear": "jest --clearCache",
     "test:watch": "jest --watch"
   },
   "dependencies": {

@@ -1,5 +1,5 @@
 "use client"
-import { useContext } from "react"
+import React, { useContext } from "react"
 import { ProductsCartContext } from "@/context/useProductsCartContext"
 import { CartTotalPriceContext } from "@/context/useCartTotalPriceContext"
 import { ThemeContext } from "@/context/useThemeContext"
@@ -20,11 +20,14 @@ export default function CartList({
 
   const { theme } = useContext(ThemeContext)
 
-  const handleToRemoveFromCart: handleToRemoveFromCart = (e, product) => {
-    e.preventDefault()
-    setProductsCart(productsCart.filter((p) => p.id !== product.id))
-    setCartTotalPrice(cartTotalPrice - product.price, product)
-    console.log(cartTotalPrice)
+  console.log("Total actual: ", cartTotalPrice)
+
+  // remove product from cart
+  const handleToRemoveFromCart: handleToRemoveFromCart = (product, index) => {
+    setCartTotalPrice(product, "remove")
+    const newArray = [...productsCart]
+    newArray.splice(index, 1)
+    setProductsCart(newArray)
   }
 
   return (
@@ -44,11 +47,13 @@ export default function CartList({
         </div>
         <div className="flex flex-col gap-6 items-baseline">
           <List array={productsCart}>
-            {(product) => (
+            {(product, index) => (
               <div className="flex justify-center items-center">
                 {
                   <Product
-                    handleFunction={handleToRemoveFromCart}
+                    handleFunction={() =>
+                      handleToRemoveFromCart(product, index)
+                    }
                     product={product}
                   >
                     delete from cart

@@ -10,13 +10,18 @@ export default function Cart({
   styles,
   handleCartList,
 }: CartProps): JSX.Element {
+  if (!handleCartList) {
+    throw new Error(
+      "handleCartList function is required to render the Cart component"
+    )
+  }
   const { productsCart } = useContext(ProductsCartContext)
 
   return (
     <div className="justify-self-center">
       <div className=" top-0 right-0 w-12 h-7 0  flex justify-center items-center">
         {children}
-        <span className="text-sm absolute ">{productsCart.length}</span>
+        <span className="text-sm absolute">{productsCart.length}</span>
         <Button typeButton="button" handleClick={handleCartList}>
           <UseIconContext styles={styles}>
             <ShoppingCartIcon />

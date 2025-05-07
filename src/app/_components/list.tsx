@@ -6,7 +6,7 @@ const List = ({ array, children }: ListProps) => {
   return (
     <>
       {array.map((item, index) => (
-        <React.Fragment key={index}>{children(item)}</React.Fragment>
+        <React.Fragment key={index}>{children(item, index)}</React.Fragment>
       ))}
     </>
   )
