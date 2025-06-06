@@ -30,7 +30,7 @@ export async function loginPostFormAction(formData: FormData): Promise<void> {
   const { data, error } = await supabase.auth.signInWithPassword(rawData)
 
   if (error) {
-    throw new Error(error.message)
+    throw new Error("email or password is incorrect")
   }
   if (data.user) {
     redirect("/")
