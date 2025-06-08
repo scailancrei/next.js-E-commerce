@@ -14,7 +14,13 @@ export default function FormComponent({
   styles,
 }: FormProps): JSX.Element {
   return (
-    <Form className={styles} action={action} id={id} formMethod="post">
+    <Form
+      role="form"
+      className={styles}
+      action={action}
+      id={id}
+      formMethod="post"
+    >
       {children}
     </Form>
   )
