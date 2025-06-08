@@ -28,7 +28,7 @@ export default function FormLogin(): JSX.Element {
         styles="w-full flex flex-col justify-center items-center max-w-sm gap-4 text-black"
       >
         <label className="focus:valid:bg-green-600 focus:invalid:bg-red-600 ">
-          Username
+          Email
         </label>
         <Input
           required={true}
