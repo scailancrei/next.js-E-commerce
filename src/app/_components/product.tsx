@@ -27,7 +27,7 @@ const Product = ({ product, children, handleFunction }: ProductProps) => {
         <p className="text-sm">{product.price}€</p>
       </div>
       <Button
-        handleClick={(e) => handleFunction(e, product)}
+        handleClick={() => handleFunction(product)}
         typeButton="button"
         styles="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 md:py-1 md:px-1 rounded-sm items-center w-1/2"
       >

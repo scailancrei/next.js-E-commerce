@@ -7,7 +7,7 @@ export default function TotalPrice() {
   return (
     <div className="">
       <span>Total Price: </span>
-      <span className="text-sm ">{cartTotalPrice}</span>
+      <span className="text-sm ">{cartTotalPrice.toFixed(2)}€</span>
     </div>
   )
 }

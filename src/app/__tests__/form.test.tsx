@@ -17,6 +17,7 @@ describe("Form component", () => {
           name="email"
           placeholder="Email"
         />
+
         <input
           type="password"
           aria-label="password"
@@ -27,11 +28,11 @@ describe("Form component", () => {
     )
     const formElement = screen.getByRole("form")
     expect(formElement).toBeInTheDocument()
-    const inputEmail = screen.getByRole("textbox", { name: "email" })
+    const inputEmail = screen.getByLabelText("email")
     expect(inputEmail).toBeInTheDocument()
     expect(inputEmail).toHaveAttribute("name", "email")
 
-    const inputPassword = screen.getByRole("textbox", { name: "password" })
+    const inputPassword = screen.getByLabelText("password")
     expect(inputPassword).toBeInTheDocument()
     expect(inputPassword).toHaveAttribute("name", "password")
 

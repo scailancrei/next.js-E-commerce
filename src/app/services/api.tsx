@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios"
+import axios from "axios"
 import { ProductType } from "@/types/types"
 
 export async function getAllProducts(): Promise<ProductType[]> {

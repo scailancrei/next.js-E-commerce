@@ -1,0 +1,22 @@
+name: "Github Actions deployment"
+
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  schedule:
+    - cron: "33 1 * * 6"
+
+jobs:
+  Testing-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This is running on a schedule"
+      - run: echo "running on ${{github.ref}} branch and the repository ${{github.repository}}"
+      - run: echo "running on ${{github.event_name}} event"
+      - run: echo "running on ${{github.actor}} user"
+
+      - run: echo "this process should be ${{job.status}}"
