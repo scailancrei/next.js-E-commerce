@@ -12,7 +12,7 @@
       "app/*": ["*"]
     },
 
-    "target": "ES2024",
+    "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -38,8 +38,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next.config.ts",
-    "src/app/register/register"
+    "next.config.ts"
   ],
   "exclude": ["node_modules"]
 }
