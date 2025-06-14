@@ -2,9 +2,9 @@ name: CI - Next.js
 
 on:
   push:
-    branches: [main]
+    branches: [main, tests]
   pull_request:
-    branches: [main]
+    branches: [main, tests]
 
 jobs:
   build-and-test:
@@ -31,12 +31,12 @@ jobs:
 
       - name: "Check if build exists"
         run: |
-          if [-d .next ]; then 
-            echo "Build exists";
+          if [ -d .next ]; then 
+           echo "Build exists";
           else
             echo "Build does not exist";
-            exit 1;
-          fi
+             exit 1;
+           fi
 
       - name: 📂 Upload production build (optional)
         uses: actions/upload-artifact@v4

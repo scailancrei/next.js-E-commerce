@@ -1,5 +1,7 @@
 import React from "react"
-import { getByAltText, render, screen } from "../utils/tests-utils/test-utils"
+
+import { render, screen } from "../utils/tests-utils/test-utils"
+
 import Cart from "@/_components/Cart"
 
 describe("Cart", () => {
