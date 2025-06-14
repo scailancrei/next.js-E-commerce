@@ -5,7 +5,7 @@ import UseIconContext from "../context/useIconContext"
 import Button from "@/_components/button"
 import Theme from "@/_components/theme"
 
-import { UserType } from "@/context/useUserContext"
+import { UserType } from "@/types/types"
 import Link from "@/_components/links"
 
 type Props = {
