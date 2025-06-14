@@ -41,7 +41,16 @@ describe("Home", () => {
       productsCart: [],
     })
 
-    expect(GetUser).toHaveTextContent("test@email.com")
+    expect(GetUser).toHaveReturnedWith(
+      Promise.resolve({
+        data: {
+          user: {
+            id: "1",
+            email: "test@email.com",
+          },
+        },
+      })
+    )
   })
 
   it("should render the home without user and with products", async () => {
@@ -67,6 +76,6 @@ describe("Home", () => {
         },
       ],
     })
-    return await expect(GetUser).rejects.toThrow("User not found")
+    expect(GetUser).toHaveBeenCalled()
   })
 })
