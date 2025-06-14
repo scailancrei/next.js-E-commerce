@@ -1,3 +1,8 @@
+jest.mock("../services/getUser", () => ({
+  GetUser: jest.fn(() => Promise.resolve({ data: undefined })),
+}))
+
+import { GetUser } from "../services/getUser"
 import { render } from "../utils/tests-utils/test-utils"
 import "@testing-library/jest-dom"
 import Home from "app/page"
@@ -8,14 +13,25 @@ describe("Home", () => {
       user: undefined,
       productsCart: [],
     })
+    expect(GetUser).toHaveBeenCalledWith()
   })
 
   it("should render the home with user and without products", async () => {
+    ;(GetUser as jest.Mock).mockImplementationOnce(() =>
+      Promise.resolve({
+        data: {
+          user: {
+            id: "1",
+            email: "test@email.com",
+          },
+        },
+      })
+    )
     render(<Home />, {
       user: {
         user: {
           id: "1",
-          email: "email@email.com",
+          email: "test@email.com",
           app_metadata: {},
           user_metadata: {},
           aud: "authenticated",
@@ -24,9 +40,12 @@ describe("Home", () => {
       },
       productsCart: [],
     })
+
+    expect(GetUser).toHaveTextContent("test@email.com")
   })
 
   it("should render the home without user and with products", async () => {
+    ;(GetUser as jest.Mock).mockRejectedValueOnce(new Error("User not found"))
     render(<Home />, {
       user: undefined,
       productsCart: [
@@ -49,4 +68,5 @@ describe("Home", () => {
       ],
     })
   })
+  expect(GetUser).toThrow("User not found")
 })
