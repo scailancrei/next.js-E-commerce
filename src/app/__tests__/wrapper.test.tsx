@@ -67,6 +67,6 @@ describe("Home", () => {
         },
       ],
     })
+    return await expect(GetUser).rejects.toThrow("User not found")
   })
-  expect(GetUser).toThrow("User not found")
 })
