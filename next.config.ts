@@ -1,5 +1,10 @@
 import { NextConfig } from "next"
+import withBundleAnalyzer from "@next/bundle-analyzer"
+const withAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+})
 const config: NextConfig = {
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -12,4 +17,4 @@ const config: NextConfig = {
   },
 }
 
-export default config
+export default withAnalyzer(config)

@@ -22,7 +22,11 @@ export default function Cart({
       <div className=" top-0 right-0 w-12 h-7 0  flex justify-center items-center">
         {children}
         <span className="text-sm absolute">{productsCart.length}</span>
-        <Button typeButton="button" handleClick={handleCartList}>
+        <Button
+          title="Open cart"
+          typeButton="button"
+          handleClick={handleCartList}
+        >
           <UseIconContext styles={styles}>
             <ShoppingCartIcon />
           </UseIconContext>

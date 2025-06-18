@@ -18,16 +18,16 @@ import { GetUser } from "./services/getUser"
 import { CartListContext } from "./context/useCartListContext"
 
 export default function Home(): JSX.Element {
-  const [isOpenNav, setIsOpenNav] = useState(false)
+  const [isOpenMenuNav, setIsOpenMenuNav] = useState(false)
   const { cartListState, setCartListState } = useContext(CartListContext)
   const { theme } = useContext(ThemeContext)
   const { currentUser, setUser } = useContext(UserContext)
 
-  const handleNav: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    setIsOpenNav(!isOpenNav)
+  const handleMenuNav: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    setIsOpenMenuNav(!isOpenMenuNav)
   }
 
-  const handleCartList: React.MouseEventHandler<
+  const handleCartListState: React.MouseEventHandler<
     HTMLButtonElement | HTMLDivElement
   > = () => {
     setCartListState(!cartListState)
@@ -70,9 +70,11 @@ export default function Home(): JSX.Element {
           />
         </NavItem>
 
+        {/* Open Nav Menu in Mobile resolutions */}
         <Button
+          title="open nav menu"
           typeButton="button"
-          handleClick={handleNav}
+          handleClick={handleMenuNav}
           styles={"justify-self-center  sm:hidden bg-blue-500 w-3 "}
         >
           <UseIconContext
@@ -86,7 +88,8 @@ export default function Home(): JSX.Element {
             <MenuIcon />
           </UseIconContext>
         </Button>
-        <div className="max-sm:hidden justify-around col-start-4 col-span-2 flex gap-6 *:hover:bg-[#8fb1e5] *:hover:text-black ">
+
+        <div className="max-sm:hidden justify-around col-start-4 col-span-2 flex gap-6  *:hover:text-blue-200 ">
           <NavItem>
             {currentUser ? (
               <Links href={"/logout"}>Logout</Links>
@@ -95,12 +98,12 @@ export default function Home(): JSX.Element {
             )}
           </NavItem>
           <NavItem>
-            {currentUser ? <Button typeButton="button">profile</Button> : <></>}
+            {currentUser ? <Links href={"/profile"}>profile</Links> : <></>}
           </NavItem>
 
-          <NavItem styles=" *:hover:text-blue-500">
+          <NavItem styles=" *:hover:text-blue-200">
             <Cart
-              handleCartList={handleCartList}
+              handleCartList={handleCartListState}
               styles={{ color: "black", size: "4rem", text: "black" }}
             ></Cart>
           </NavItem>
@@ -109,14 +112,17 @@ export default function Home(): JSX.Element {
             <Theme />
           </NavItem>
         </div>
-        {isOpenNav && (
+        {isOpenMenuNav && (
           <>
-            <NavLinksResponsives handleClick={handleNav} isUser={currentUser} />
+            <NavLinksResponsives
+              handleClick={handleMenuNav}
+              isUser={currentUser}
+            />
           </>
         )}
       </Nav>
 
-      {cartListState && <CartList handleCartList={handleCartList} />}
+      {cartListState && <CartList handleCartListState={handleCartListState} />}
 
       <div className="grid grid-cols-1 grid-rows-1 auto-cols-auto grid-flow-row-dense gap-3 justify-center">
         <h2 id="title" className="text-5xl text-center">

@@ -6,6 +6,7 @@ export type Theme = "light" | "dark"
 export type ButtonProps = {
   children?: JSX.Element | React.ReactNode
   typeButton: React.ButtonHTMLAttributes<HTMLButtonElement>["type"]
+  title: string
   styles?: string
   idButton?: string
   handleClick?: React.MouseEventHandler<HTMLButtonElement>
@@ -52,7 +53,9 @@ export interface ProductType {
 }
 
 export type CartListProps = {
-  handleCartList: React.MouseEventHandler<HTMLDivElement | HTMLButtonElement>
+  handleCartListState: React.MouseEventHandler<
+    HTMLDivElement | HTMLButtonElement
+  >
 }
 
 export type CartProps = {
