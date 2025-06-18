@@ -9,9 +9,7 @@ import { getAllProducts } from "app/services/api"
 export default function Products(): React.ReactElement {
   const [productsList, setProductsList] = useState<ProductType[]>()
   const { productsCart, setProductsCart } = useContext(ProductsCartContext)
-  const { cartTotalPrice, setCartTotalPrice } = useContext(
-    CartTotalPriceContext
-  )
+  const { setCartTotalPrice } = useContext(CartTotalPriceContext)
   const handleAddToCart: handleAddToCart = (product) => {
     // add product to cart
     setProductsCart([...productsCart, product])
@@ -34,7 +32,7 @@ export default function Products(): React.ReactElement {
   return productsList === undefined ? (
     <div>Loading...</div>
   ) : (
-    <ul className="list-disc list-inside">
+    <div className="list-disc list-inside">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-center">
         <List array={productsList}>
           {(items) => (
@@ -44,6 +42,6 @@ export default function Products(): React.ReactElement {
           )}
         </List>
       </div>
-    </ul>
+    </div>
   )
 }

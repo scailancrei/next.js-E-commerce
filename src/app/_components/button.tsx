@@ -3,6 +3,7 @@ import { ButtonProps } from "@/types/types"
 
 export default function Button({
   styles,
+  title,
   typeButton,
   handleClick,
   idButton,
@@ -10,6 +11,7 @@ export default function Button({
 }: ButtonProps): React.ReactElement {
   return (
     <button
+      title={title}
       id={idButton}
       onClick={handleClick}
       type={typeButton}
