@@ -2,7 +2,6 @@
 import React, { useContext, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ProductsCartContext } from "@/context/useProductsCartContext"
-import { CartTotalPriceContext } from "@/context/useCartTotalPriceContext"
 import CheckoutForm from "@/_components/checkOutForm"
 
 /**
@@ -16,7 +15,6 @@ import CheckoutForm from "@/_components/checkOutForm"
 
 export default function CheckoutPage(): React.ReactElement {
   const { productsCart } = useContext(ProductsCartContext)
-  const { cartTotalPrice } = useContext(CartTotalPriceContext)
 
   const router = useRouter()
 
@@ -30,7 +28,7 @@ export default function CheckoutPage(): React.ReactElement {
     return <div>Redirecting to main page...</div>
   }
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-full">
       <CheckoutForm />
     </div>
   )

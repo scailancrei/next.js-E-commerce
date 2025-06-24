@@ -9,6 +9,7 @@ export async function POST(req: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       ui_mode: "embedded",
       customer_email: "customer@example.com",
+      payment_method_types: ["card"],
       submit_type: "pay",
       billing_address_collection: "auto",
       shipping_address_collection: {
