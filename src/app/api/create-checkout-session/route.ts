@@ -3,7 +3,7 @@ import { stripe } from "@/utils/libs/stripe"
 
 export async function POST(req: NextRequest) {
   const origin = req.headers.get("origin") || "http://localhost:3000"
-  const { products } = await req.json()
+  const data = await req.json()
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
       shipping_address_collection: {
         allowed_countries: ["ES"],
       },
-      line_items: products.map((product: any) => ({
+      line_items: data.products.map((product: any) => ({
         price_data: {
           currency: "eur",
           product_data: { name: product.title },

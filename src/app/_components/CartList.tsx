@@ -44,6 +44,8 @@ export default function CartList({
             title="close cart"
             styles="hover:bg-gray-400 hover:text-black text-white bg-gray-500 rounded-full p-2"
             typeButton="button"
+            idButton="close-cart-button"
+            dataCy="close-cart-button"
             handleClick={handleCartListState}
           >
             <CloseIcon />

@@ -7,6 +7,7 @@ export default function Button({
   typeButton,
   handleClick,
   idButton,
+  dataCy,
   children,
 }: ButtonProps): React.ReactElement {
   return (
@@ -15,6 +16,7 @@ export default function Button({
       id={idButton}
       onClick={handleClick}
       type={typeButton}
+      data-cy={dataCy}
       className={styles}
     >
       {children}
