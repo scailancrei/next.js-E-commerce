@@ -22,7 +22,7 @@ Follow these steps to run the project on your machine without Docker.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/tu-usuario/next.js-E-commerce.git
+   git clone https://github.com/scailancrei/next.js-E-commerce.git
    cd next.js-E-commerce
    ```
 2. Install dependencies:
