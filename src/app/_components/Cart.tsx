@@ -21,10 +21,14 @@ export default function Cart({
     <div className="justify-self-center">
       <div className=" top-0 right-0 w-12 h-7 0  flex justify-center items-center">
         {children}
-        <span className="text-sm absolute">{productsCart.length}</span>
+        <span className="text-sm absolute pointer-events-none ">
+          {productsCart.length}
+        </span>
         <Button
           title="Open cart"
+          idButton="Cart"
           typeButton="button"
+          dataCy="cart-button"
           handleClick={handleCartList}
         >
           <UseIconContext styles={styles}>
