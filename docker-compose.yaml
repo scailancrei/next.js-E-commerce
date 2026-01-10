@@ -1,0 +1,23 @@
+services:
+  nextjs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+      API_PRODUCTS_URL: ${API_PRODUCTS_URL}
+      NEXT_SECRET_STRIPE_KEY: ${NEXT_SECRET_STRIPE_KEY}
+    env_file: /.env
+    networks:
+      - next-ecommerce
+    volumes:
+      - .:/app
+    command: npm start
+
+networks:
+  next-ecommerce:
+    driver: bridge
