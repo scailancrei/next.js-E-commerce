@@ -9,6 +9,7 @@ export type ButtonProps = {
   title: string
   styles?: string
   idButton?: string
+  dataCy?: string
   handleClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
