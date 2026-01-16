@@ -2,18 +2,34 @@
   "compilerOptions": {
     "baseUrl": "src/app/",
     "paths": {
-      "@/_components/*": ["_components/*"],
-      "@/context/*": ["context/*"],
-      "@/utils/*": ["utils/*"],
-
-      "api/*": ["api/*"],
-      "providers/*": ["providers/*"],
-      "@/types/*": ["types/*"],
-      "app/*": ["*"]
+      "@/_components/*": [
+        "_components/*"
+      ],
+      "@/context/*": [
+        "context/*"
+      ],
+      "@/utils/*": [
+        "utils/*"
+      ],
+      "api/*": [
+        "api/*"
+      ],
+      "providers/*": [
+        "providers/*"
+      ],
+      "@/types/*": [
+        "types/*"
+      ],
+      "app/*": [
+        "*"
+      ]
     },
-
     "target": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -24,21 +40,26 @@
     "moduleResolution": "node16",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "types": ["jest", "@testing-library/jest-dom"]
+    "types": [
+      "jest",
+      "@testing-library/jest-dom"
+    ]
   },
-
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next.config.ts"
+    "next.config.ts",
+    ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

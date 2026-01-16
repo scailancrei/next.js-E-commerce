@@ -28,7 +28,7 @@ export default function CheckoutForm() {
 
   if (!clientSecret) return <p>Loading payments...</p>
   return (
-    <div id="checkout">
+    <div id="checkout" className="bg-linear-30">
       <EmbeddedCheckoutProvider
         stripe={stripePromise}
         options={{ clientSecret }}
