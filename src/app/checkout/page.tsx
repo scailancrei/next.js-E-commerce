@@ -19,8 +19,10 @@ export default function CheckoutPage(): React.ReactElement {
     return <div>Redirecting to main page...</div>
   }
   return (
-    <div className="flex justify-center items-center h-screen">
-      <CheckoutForm />
+    <div className="flex justify-center items-center">
+      <div className="w-1/2 mt-30 mb-30 p-6 bg-white rounded-lg shadow-lg">
+        <CheckoutForm />
+      </div>
     </div>
   )
 }
